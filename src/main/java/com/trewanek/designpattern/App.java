@@ -12,7 +12,8 @@ public class App
     public static void main( String[] args )
     {
         quickStartIterator();
-        quickStartAdaptor();
+        quickStartAdapterSubclass();
+        quickStartAdapterTransfer();
     }
 
     public static void quickStartIterator() {
@@ -34,8 +35,17 @@ public class App
         }
     }
 
-    public static void quickStartAdaptor() {
-        Print print = new PrintBanner("Hello World!");
+    public static void quickStartAdapterSubclass() {
+        Print print = new PrintBanner("Hello AdapterSubclass!");
+        print.printWeak();
+        print.printStrong();
+    }
+
+    public static void quickStartAdapterTransfer() {
+        com.trewanek.designpattern.adaptertransfer.Banner banner = 
+            new com.trewanek.designpattern.adaptertransfer.Banner("Hello AdapterTransfer!");
+        com.trewanek.designpattern.adaptertransfer.Print print =
+            new com.trewanek.designpattern.adaptertransfer.PrintBanner(banner);
         print.printWeak();
         print.printStrong();
     }
