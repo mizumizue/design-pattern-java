@@ -1,23 +1,20 @@
 package com.trewanek.designpattern.iterator;
 
 public class BookShelfIterator implements Iterator {
-    private BookShelf bookshelf;
+    private BookShelf bookShelf;
     private int index;
 
     public BookShelfIterator(BookShelf bookShelf) {
-        this.bookshelf = bookShelf;
+        this.bookShelf = bookShelf;
         this.index = 0;
     }
 
     public boolean hasNext() {
-        if (index < this.bookshelf.getLength()) {
-            return true;
-        }
-        return false;
+        return (index < bookShelf.getLength()) ? true : false;
     }
 
     public Object next() {
-        Book book = bookshelf.getBookAt(index);
+        Book book = bookShelf.getBookAt(index);
         index++;
         return book;
     }

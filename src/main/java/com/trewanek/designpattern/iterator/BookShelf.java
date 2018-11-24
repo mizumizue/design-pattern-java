@@ -1,24 +1,25 @@
 package com.trewanek.designpattern.iterator;
 
-public class BookShelf implements Aggregate {
-    private Book[] books;
-    private int last;
+import java.util.List;
+import java.util.ArrayList;
 
-    public BookShelf(int maxsize) {
-        this.books = new Book[maxsize];
+public class BookShelf implements Aggregate {
+    private List<Book> books;
+
+    public BookShelf() {
+        books = new ArrayList<Book>();
     }
 
     public Book getBookAt(int index) {
-        return this.books[index];
+        return books.get(index);
     }
 
     public void appendBook(Book book) {
-        this.books[last] = book;
-        last++;
+        books.add(book);
     }
 
     public int getLength() {
-        return last;
+        return books.size();
     }
 
     public Iterator iterator() {
