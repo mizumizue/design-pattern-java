@@ -7,6 +7,10 @@ import com.trewanek.designpattern.iterator.Iterator;
 import com.trewanek.designpattern.adaptersubclass.Print;
 import com.trewanek.designpattern.adaptersubclass.PrintBanner;
 
+import com.trewanek.designpattern.observer.RandomNumberGenerator;
+import com.trewanek.designpattern.observer.DigitObserver;
+import com.trewanek.designpattern.observer.GraphObserver;
+
 public class App 
 {
     public static void main( String[] args )
@@ -14,6 +18,7 @@ public class App
         quickStartIterator();
         quickStartAdapterSubclass();
         quickStartAdapterTransfer();
+        quickStartObserver();
     }
 
     public static void quickStartIterator() {
@@ -48,5 +53,14 @@ public class App
             new com.trewanek.designpattern.adaptertransfer.PrintBanner(banner);
         print.printWeak();
         print.printStrong();
+    }
+
+    public static void quickStartObserver() {
+        RandomNumberGenerator generator = new RandomNumberGenerator();
+        DigitObserver ob1 = new DigitObserver();
+        GraphObserver ob2 = new GraphObserver();
+        generator.addObserver(ob1);
+        generator.addObserver(ob2);
+        generator.execute();
     }
 }
